@@ -1,0 +1,4 @@
+(executable
+ (public_name producers)
+ (name main)
+ (libraries producers))

@@ -1,0 +1,4 @@
+(test
+ (name producers_tests)
+ (modules producers_tests)
+ (libraries producers alcotest))
