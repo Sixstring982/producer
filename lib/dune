@@ -1,5 +1,6 @@
 (library
- (name producers)
- (modules producers)
+ (name producer)
+ (public_name producer)
+ (modules producer)
  (libraries hmap))
 
