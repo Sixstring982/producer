@@ -1,26 +1,25 @@
-(lang dune 3.10)
+(lang dune 3.7)
 
-(name producers)
+(name producer)
 
 (generate_opam_files true)
 
 (source
- (github username/reponame))
+ (github sixstring982/producer))
 
-(authors "Author Name")
+(authors "Trent Small")
 
-(maintainers "Maintainer Name")
+(maintainers "sixstring982@gmail.com")
 
-(license LICENSE)
+(license BSD-3-Clause)
 
-(documentation https://url/to/documentation)
+(documentation https://sixstring982.github.io/producer)
 
 (package
- (name producers)
- (synopsis "A short synopsis")
- (description "A longer description")
- (depends ocaml dune)
+ (name producer)
+ (synopsis "Accumulate results using monadic dependency graphs")
+ (depends ocaml dune alcotest hmap)
  (tags
-  (topics "to describe" your project)))
+  ("dependency injection" graph node producer)))
 
 ; See the complete stanza docs at https://dune.readthedocs.io/en/stable/dune-files.html#dune-project
