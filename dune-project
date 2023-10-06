@@ -18,7 +18,7 @@
 (package
  (name producer)
  (synopsis "Accumulate results using monadic dependency graphs")
- (depends ocaml dune alcotest hmap)
+ (depends (ocaml (>= 4.08)) (dune (>= 3.7)) (alcotest (>= 1.7.0 :with-test)) (hmap (>= 0.8.1)))
  (tags
   ("dependency injection" graph node producer)))
 
