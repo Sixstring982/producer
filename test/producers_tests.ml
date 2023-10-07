@@ -109,6 +109,28 @@ let () =
           (*
            *
            *)
+          ( test_case "Works with a two-argument monad" `Quick @@ fun () ->
+            let module Producer = Producer.Make2(struct
+              include Result
+
+              let return = ok
+            end) in
+            let int_node : (unit, int, string) Producer.Node.t =
+              Producer.Node.make [] (fun () -> Ok 123)
+            in
+            let other_int_node : (unit, int, string) Producer.Node.t =
+              Producer.Node.make [] (fun () -> Error "uh oh")
+            in
+            let mul_node : (unit, int, string) Producer.Node.t =
+              Producer.Node.make [ int_node; other_int_node ] (fun () a b ->
+                  Ok (a * b))
+            in
+            let graph = Producer.Graph.make mul_node in
+            let actual = graph.execute () in
+            check (result int string) "equal" (Error "uh oh") actual );
+          (*
+           *
+           *)
           ( test_case "Structurally-typed context" `Quick @@ fun () ->
             let int_node : (< .. >, int) Producer.Node.t =
               Producer.Node.make [] (fun _ -> 123)
